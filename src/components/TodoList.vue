@@ -58,26 +58,36 @@ export default {
   data() {
     return {
       todos: [
-        { description: "Do the dishes", completed: false },
-        { description: "Take out the trash", completed: false },
-        { description: "Finish doing laundry", completed: false }
       ]
     };
   },
   methods: {
     addTodo(newTodo) {
       this.todos.push({ description: newTodo, completed: false });
+      localStorage.removeItem("Todos");
+      localStorage.setItem("Todos", JSON.stringify(this.todos));
     },
     toggleTodo(todo) {
       todo.completed = !todo.completed;
+      localStorage.removeItem("Todos");
+      localStorage.setItem("Todos", JSON.stringify(this.todos));
     },
     deleteTodo(deletedTodo) {
       this.todos = this.todos.filter(todo => todo !== deletedTodo);
+      localStorage.removeItem("Todos");
+      localStorage.setItem("Todos", JSON.stringify(this.todos));
     },
     editTodo(todo, newTodoDescription) {
       todo.description = newTodoDescription;
+      localStorage.removeItem("Todos");
+      localStorage.setItem("Todos", JSON.stringify(this.todos));
     }
   },
+  created()
+  {
+    this.todos = JSON.parse(localStorage.getItem("Todos"));
+  }
+  ,
   components: { Todo, CreateTodo }
 };
 </script>

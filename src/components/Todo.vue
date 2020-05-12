@@ -1,13 +1,13 @@
 <template>
   <li class="d-flex align-items-center list-group-item">
-    <button
+      <span>{{ description }}</span>
+    <input
+      type="checkbox"
       class="btn border-0 flex-grow-1 text-left shadow-none"
       :class="{ completed }"
-      @click="$emit('on-toggle')"
+      v-on:change="$emit('on-toggle')"
       v-if="!isEditing"
-    >
-      <span>{{ description }}</span>
-    </button>
+     >
     <form v-else class="flex-grow-1" @submit.prevent="finishEditing()">
       <input
         type="text"
