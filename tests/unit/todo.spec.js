@@ -4,6 +4,21 @@ import CreateTodo from "@/components/CreateTodo.vue";
 import TodoList from "@/components/TodoList_test.vue";
 
 
+describe("CreateTodo.vue", () => {
+
+  const wrapper = shallowMount(CreateTodo);
+  const x = JSON.parse(localStorage.getItem("Todos"));
+
+  const task = "New task";
+  wrapper.vm.$data["newTodo"] = task;
+
+  it("add props.newTodo when passed", () => {
+    wrapper.vm.addTodo();
+    expect(wrapper.emitted()["on-new-todo"][0][0]).toBe(task)
+  });
+});
+
+
 describe("TodoList.vue", () => {
 
 
