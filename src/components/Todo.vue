@@ -1,32 +1,41 @@
 <template>
   <li class="d-flex align-items-center list-group-item">
+    <div class="col-8">
       <span>{{ description }}</span>
-    <form v-if="isEditing" class="flex-grow-1" @submit.prevent="finishEditing()">
+      <form
+        v-if="isEditing"
+        class="flex-grow-1"
+        @submit.prevent="finishEditing()"
+      >
+        <input
+          type="text"
+          class="form-control"
+          v-model="newTodoDescription"
+          @blur="finishEditing()"
+          ref="newTodo"
+        />
+      </form>
+    </div>
+
+    <div class="col-4">
       <input
-        type="text"
-        class="form-control"
-        v-model="newTodoDescription"
-        @blur="finishEditing()"
-        ref="newTodo"
+        type="checkbox"
+        class="btn border-0 flex-grow-1 ml-auto"
+        v-on:change="$emit('on-toggle')"
+        v-if="!isEditing"
       />
-    </form>
-    <div class="ml-auto">
-      <input
-      type="checkbox"
-      class="btn border-0 flex-grow-1 ml-auto"
-      :class="{ completed }"
-      v-on:change="$emit('on-toggle')"
-      v-if="!isEditing"
-      >
       <button
-      @click="startEditing()"
-      class="btn btn-outline-primary border-0 ml-2"
+        @click="startEditing()"
+        class="btn btn-outline-primary border-0 ml-2"
       >
-      <span class="fa fa-edit"></span>
-    </button>
-    <button @click="$emit('on-delete')" class="btn btn-outline-danger border-0">
-      <span class="fa fa-trash"></span>
-    </button>
+        <span class="fa fa-edit"></span>
+      </button>
+      <button
+        @click="$emit('on-delete')"
+        class="btn btn-outline-danger border-0"
+      >
+        <span class="fa fa-trash"></span>
+      </button>
     </div>
   </li>
 </template>

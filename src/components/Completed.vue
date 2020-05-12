@@ -34,8 +34,7 @@ export default {
   },
   data() {
     return {
-      todos: [
-      ]
+      todos: []
     };
   },
   methods: {
@@ -60,11 +59,9 @@ export default {
       localStorage.setItem("Todos", JSON.stringify(this.todos));
     }
   },
-  created()
-  {
+  created() {
     this.todos = JSON.parse(localStorage.getItem("Todos"));
-  }
-  ,
+  },
   components: { Todo }
 };
 </script>

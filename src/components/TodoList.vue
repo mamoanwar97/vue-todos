@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-12 col-sm-10 col-lg-6">
         <h3>Not Completed</h3>
-        <ul class="list-group m-5">
+        <ul class="list-group m-2">
           <todo
             v-for="(todo, index) in todos.filter(
               todo => todo.completed === false
@@ -39,8 +39,7 @@ export default {
   },
   data() {
     return {
-      todos: [
-      ]
+      todos: []
     };
   },
   methods: {
@@ -65,11 +64,9 @@ export default {
       localStorage.setItem("Todos", JSON.stringify(this.todos));
     }
   },
-  created()
-  {
+  created() {
     this.todos = JSON.parse(localStorage.getItem("Todos"));
-  }
-  ,
+  },
   components: { Todo, CreateTodo }
 };
 </script>
