@@ -10,9 +10,30 @@
     </div>
     <div class="row">
       <div class="col-12 col-sm-10 col-lg-6">
+        <h3>Not Completed</h3>
         <ul class="list-group">
           <todo
-            v-for="(todo, index) in todos"
+            v-for="(todo, index) in todos.filter(
+              todo => todo.completed === false
+            )"
+            :key="index"
+            :description="todo.description"
+            :completed="todo.completed"
+            @on-toggle="toggleTodo(todo)"
+            @on-delete="deleteTodo(todo)"
+            @on-edit="editTodo(todo, $event)"
+          />
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-10 col-lg-6">
+        <h3>Completed</h3>
+        <ul class="list-group">
+          <todo
+            v-for="(todo, index) in todos.filter(
+              todo => todo.completed === true
+            )"
             :key="index"
             :description="todo.description"
             :completed="todo.completed"
@@ -32,15 +53,15 @@ import CreateTodo from "./CreateTodo.vue";
 
 export default {
   props: {
-    listName: String,
+    listName: String
   },
   data() {
     return {
       todos: [
         { description: "Do the dishes", completed: false },
         { description: "Take out the trash", completed: false },
-        { description: "Finish doing laundry", completed: false },
-      ],
+        { description: "Finish doing laundry", completed: false }
+      ]
     };
   },
   methods: {
@@ -55,9 +76,9 @@ export default {
     },
     editTodo(todo, newTodoDescription) {
       todo.description = newTodoDescription;
-    },
+    }
   },
-  components: { Todo, CreateTodo },
+  components: { Todo, CreateTodo }
 };
 </script>
 
