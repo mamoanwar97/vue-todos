@@ -20,19 +20,19 @@
     <div class="col-4">
       <input
         type="checkbox"
-        class="btn border-0 flex-grow-1 ml-auto"
+        class="btn border-0 flex-grow-1 ml-auto checkbox"
         v-on:change="$emit('on-toggle')"
         v-if="!isEditing"
       />
       <button
         @click="startEditing()"
-        class="btn btn-outline-primary border-0 ml-2"
+        class="btn btn-outline-primary border-0 ml-2 editing"
       >
         <span class="fa fa-edit"></span>
       </button>
       <button
         @click="$emit('on-delete')"
-        class="btn btn-outline-danger border-0"
+        class="btn btn-outline-danger border-0 delete"
       >
         <span class="fa fa-trash"></span>
       </button>

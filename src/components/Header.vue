@@ -2,9 +2,9 @@
   <header class="header">
     <h1>TodoList</h1>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/todo">Todo</router-link> |
-      <router-link to="/done">Done</router-link>
+      <router-link to="/" class="to-home" name="home">Home</router-link> |
+      <router-link to="/todo" class="to-todo" name="todo">Todo</router-link> |
+      <router-link to="/done" class="to-done" name="done">Done</router-link>
     </div>
   </header>
 </template>

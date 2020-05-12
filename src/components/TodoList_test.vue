@@ -49,23 +49,23 @@ export default {
   methods: {
     addTodo(newTodo) {
       this.todos.push({ description: newTodo, completed: false });
-      localStorage.removeItem("Todos");
-      localStorage.setItem("Todos", JSON.stringify(this.todos));
+      //localStorage.removeItem("Todos");
+      //localStorage.setItem("Todos", JSON.stringify(this.todos));
     },
     toggleTodo(todo) {
       todo.completed = !todo.completed;
-      localStorage.removeItem("Todos");
-      localStorage.setItem("Todos", JSON.stringify(this.todos));
+      //localStorage.removeItem("Todos");
+      //localStorage.setItem("Todos", JSON.stringify(this.todos));
     },
     deleteTodo(deletedTodo) {
       this.todos = this.todos.filter(todo => todo !== deletedTodo);
-      localStorage.removeItem("Todos");
-      localStorage.setItem("Todos", JSON.stringify(this.todos));
+      //localStorage.removeItem("Todos");
+      //localStorage.setItem("Todos", JSON.stringify(this.todos));
     },
     editTodo(todo, newTodoDescription) {
       todo.description = newTodoDescription;
-      localStorage.removeItem("Todos");
-      localStorage.setItem("Todos", JSON.stringify(this.todos));
+      //localStorage.removeItem("Todos");
+      //localStorage.setItem("Todos", JSON.stringify(this.todos));
     },
     getTodo()
     {
@@ -73,7 +73,7 @@ export default {
     }
   },
   created() {
-    this.getTodo();
+    //this.getTodo();
   },
   components: { Todo, CreateTodo }
 };
