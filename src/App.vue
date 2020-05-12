@@ -1,14 +1,17 @@
 <template>
-  <todo-list list-name="My to-dos" />
+  <div id="#app">
+    <Header />
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import TodoList from "./components/TodoList.vue";
+import Header from './components/Header.vue';
 
 export default {
   name: "App",
   components: {
-    TodoList,
+    Header
   },
 };
 </script>

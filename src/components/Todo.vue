@@ -1,14 +1,7 @@
 <template>
   <li class="d-flex align-items-center list-group-item">
       <span>{{ description }}</span>
-    <input
-      type="checkbox"
-      class="btn border-0 flex-grow-1 text-left shadow-none"
-      :class="{ completed }"
-      v-on:change="$emit('on-toggle')"
-      v-if="!isEditing"
-     >
-    <form v-else class="flex-grow-1" @submit.prevent="finishEditing()">
+    <form v-if="isEditing" class="flex-grow-1" @submit.prevent="finishEditing()">
       <input
         type="text"
         class="form-control"
@@ -17,15 +10,24 @@
         ref="newTodo"
       />
     </form>
-    <button
+    <div class="ml-auto">
+      <input
+      type="checkbox"
+      class="btn border-0 flex-grow-1 ml-auto"
+      :class="{ completed }"
+      v-on:change="$emit('on-toggle')"
+      v-if="!isEditing"
+      >
+      <button
       @click="startEditing()"
       class="btn btn-outline-primary border-0 ml-2"
-    >
+      >
       <span class="fa fa-edit"></span>
     </button>
     <button @click="$emit('on-delete')" class="btn btn-outline-danger border-0">
       <span class="fa fa-trash"></span>
     </button>
+    </div>
   </li>
 </template>
 

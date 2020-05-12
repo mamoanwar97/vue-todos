@@ -2,16 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="col-12 py-5">
-        <h1>Todo List</h1>
+        <h1>Todo</h1>
       </div>
-    </div>
-    <div class="row mb-3 ">
-      <create-todo @on-new-todo="addTodo($event)" />
     </div>
     <div class="row">
       <div class="col-12 col-sm-10 col-lg-6">
-        <h3>Not Completed</h3>
-        <ul class="list-group m-5">
+        <ul class="list-group m-4">
           <todo
             v-for="(todo, index) in todos.filter(
               todo => todo.completed === false
@@ -31,7 +27,6 @@
 
 <script>
 import Todo from "./Todo.vue";
-import CreateTodo from "./CreateTodo.vue";
 
 export default {
   props: {
@@ -70,7 +65,7 @@ export default {
     this.todos = JSON.parse(localStorage.getItem("Todos"));
   }
   ,
-  components: { Todo, CreateTodo }
+  components: { Todo }
 };
 </script>
 
