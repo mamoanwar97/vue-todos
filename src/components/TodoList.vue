@@ -40,9 +40,6 @@ export default {
   data() {
     return {
       todos: [
-        { description: "Do the dishes", completed: false },
-        { description: "Take out the trash", completed: false },
-        { description: "Finish doing laundry", completed: false },
       ]
     };
   },
